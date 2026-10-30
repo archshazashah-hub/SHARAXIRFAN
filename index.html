@@ -1,183 +1,289 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f7efe3">
-  <meta name="description" content="A wedding invitation for Irfan and Sharafina.">
-  <title>Irfan &amp; Sharafina | Wedding Invitation</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --paper: #f7efe3;
-      --cream: #fffaf2;
-      --ink: #65472d;
-      --gold: #b78a50;
-      --line: rgba(183, 138, 80, .58);
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      color: var(--ink);
-      background: var(--paper);
-      font-family: "Cormorant Garamond", Georgia, serif;
-    }
-    button { font: inherit; }
-    .screen {
-      min-height: 100svh;
-      display: grid;
-      place-items: center;
-      padding: 0;
-      position: relative;
-      overflow: hidden;
-      background: var(--paper);
-    }
-    .cover-wrap {
-      position: relative;
-      width: min(100%, 680px);
-      min-height: 100svh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #f8f0e5;
-    }
-    .cover {
-      display: block;
-      width: 100%;
-      height: 100svh;
-      object-fit: contain;
-      object-position: center;
-      user-select: none;
-      -webkit-user-drag: none;
-    }
-    .open-button {
-      position: absolute;
-      left: 50%;
-      bottom: clamp(5.5%, 6.5vh, 9%);
-      transform: translateX(-50%);
-      width: min(47%, 330px);
-      min-width: 190px;
-      height: clamp(54px, 8vh, 76px);
-      border: 1px solid rgba(143, 99, 48, .7);
-      border-radius: 14px;
-      background: rgba(255, 248, 237, .12);
-      color: transparent;
-      cursor: pointer;
-      box-shadow: 0 3px 12px rgba(88, 57, 25, .10);
-      -webkit-tap-highlight-color: transparent;
-    }
-    .open-button:focus-visible, .music-button:focus-visible, .back-button:focus-visible {
-      outline: 3px solid #a8793e;
-      outline-offset: 4px;
-    }
-    .open-hint {
-      position: absolute;
-      bottom: 2.2%;
-      left: 50%;
-      transform: translateX(-50%);
-      color: rgba(101, 71, 45, .72);
-      font-size: 12px;
-      letter-spacing: .12em;
-      white-space: nowrap;
-    }
-    .music-button {
-      position: fixed;
-      z-index: 10;
-      right: 16px;
-      top: 16px;
-      width: 44px;
-      height: 44px;
-      display: grid;
-      place-items: center;
-      border: 1px solid var(--line);
-      border-radius: 50%;
-      color: var(--ink);
-      background: rgba(255, 250, 242, .88);
-      cursor: pointer;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 2px 10px rgba(70, 48, 27, .08);
-    }
-    .music-button svg { width: 19px; height: 19px; }
-    @keyframes appear {
-      from { opacity: 0; transform: translateY(12px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @media (max-width: 480px) {
-      .cover-wrap { width: 100%; }
-      .cover { object-fit: cover; }
-      .open-button { bottom: 7.2%; width: 48%; min-width: 0; height: 7.2%; }
-      .inner { padding: 36px 18px; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; }
-    }
-  </style>
-</head>
-<body>
-  <audio id="siteMusic" src="assets/background-music.mp3" preload="auto" loop></audio>
+<!DOCTYPE html>
 
-  <button class="music-button" id="musicToggle" type="button" aria-label="Play background music" title="Play music">
-    <svg id="musicIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle>
-    </svg>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Irfan & Sharafina | Engagement</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+
+* {
+
+  margin: 0;
+
+  padding: 0;
+
+  box-sizing: border-box;
+
+}
+
+body {
+
+  background: #f7efe3;
+
+  font-family: 'Cormorant Garamond', serif;
+
+  overflow-x: hidden;
+
+}
+
+.cover {
+
+  width: 100%;
+
+  max-width: 680px;
+
+  height: 100vh;
+
+  height: 100svh;
+
+  margin: auto;
+
+  position: relative;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  overflow: hidden;
+
+}
+
+.cover img {
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+
+}
+
+.open-button {
+
+  position: absolute;
+
+  bottom: 7%;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: 48%;
+
+  height: 8%;
+
+  min-width: 180px;
+
+  background: transparent;
+
+  border: none;
+
+  cursor: pointer;
+
+  -webkit-tap-highlight-color: transparent;
+
+}
+
+.music-button {
+
+  position: fixed;
+
+  top: 18px;
+
+  right: 18px;
+
+  z-index: 10;
+
+  width: 44px;
+
+  height: 44px;
+
+  border-radius: 50%;
+
+  border: 1px solid #b78a50;
+
+  background: #fffaf2;
+
+  color: #65472d;
+
+  cursor: pointer;
+
+  font-size: 19px;
+
+}
+
+.music-button:focus-visible,
+
+.open-button:focus-visible {
+
+  outline: 2px solid #a8793e;
+
+  outline-offset: 4px;
+
+}
+
+@media (min-width: 681px) {
+
+  body {
+
+    display: flex;
+
+    justify-content: center;
+
+  }
+
+  .cover {
+
+    width: 100%;
+
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- BACKGROUND MUSIC -->
+
+<audio
+
+  id="backgroundMusic"
+
+  src="assets/background-music.mp3"
+
+  loop
+
+  preload="auto">
+
+</audio>
+
+<!-- MUSIC CONTROL -->
+
+<button
+
+  class="music-button"
+
+  id="musicButton"
+
+  onclick="toggleMusic()"
+
+  aria-label="Play music">
+
+  ♫
+
+</button>
+
+<!-- OPENING INVITATION -->
+
+<main class="cover">
+
+  <img
+
+    src="assets/invitation-opener.png"
+
+    alt="Irfan and Sharafina engagement invitation">
+
+  <button
+
+    class="open-button"
+
+    onclick="openInvitation()"
+
+    aria-label="Tap to open invitation">
+
   </button>
 
-  <main>
-    <section class="screen" id="coverScreen" aria-label="Wedding invitation cover">
-      <div class="cover-wrap">
-        <img class="cover" src="assets/invitation-opener.png" alt="Wedding invitation cover for Shara and Irfan">
-        <!-- This transparent button sits over the Tap to Open artwork in the supplied image. -->
-        <button class="open-button" id="openInvitation" type="button" aria-label="Tap to open the wedding invitation">Open invitation</button>
-        <span class="open-hint">TAP TO OPEN</span>
-      </div>
-    </section>
+</main>
 
-    <!-- The full invitation is hosted on Canva and opens from the cover button. -->
-  </main>
+<script>
 
-  <script>
-    const music = document.getElementById('siteMusic');
-    const musicToggle = document.getElementById('musicToggle');
-    const openButton = document.getElementById('openInvitation');
-    const canvaInvitationUrl = 'https://sharaxirfanengagement.my.canva.site/engagement-invitation-2026';
+const music = document.getElementById("backgroundMusic");
 
-    function updateMusicButton() {
-      const playing = !music.paused;
-      musicToggle.setAttribute('aria-label', playing ? 'Pause background music' : 'Play background music');
-      musicToggle.title = playing ? 'Pause music' : 'Play music';
-      musicToggle.style.opacity = playing ? '1' : '.78';
+const musicButton = document.getElementById("musicButton");
+
+const canvaLink =
+
+"https://sharaxirfanengagement.my.canva.site/engagement-invitation-2026";
+
+// PLAY / PAUSE MUSIC
+
+async function toggleMusic() {
+
+  if (music.paused) {
+
+    try {
+
+      await music.play();
+
+      musicButton.innerHTML = "♫";
+
+      musicButton.style.opacity = "1";
+
+    } catch (error) {
+
+      console.log("Music playback requires interaction.");
+
     }
 
-    async function startMusic() {
-      try {
-        await music.play();
-      } catch (error) {
-        // Mobile browsers may require a direct visitor interaction before audio can play.
-      }
-      updateMusicButton();
-    }
+  } else {
 
-    musicToggle.addEventListener('click', async () => {
-      if (music.paused) {
-        await startMusic();
-      } else {
-        music.pause();
-        updateMusicButton();
-      }
-    });
+    music.pause();
 
-    openButton.addEventListener('click', async () => {
-      await startMusic();
-      // Open the Canva invitation in a new tab so the opener tab (and its music) can remain open.
-      window.open(canvaInvitationUrl, '_blank', 'noopener,noreferrer');
-    });
+    musicButton.innerHTML = "♪";
 
-    music.addEventListener('play', updateMusicButton);
-    music.addEventListener('pause', updateMusicButton);
-    updateMusicButton();
-  </script>
+    musicButton.style.opacity = "0.7";
+
+  }
+
+}
+
+// OPEN CANVA INVITATION
+
+async function openInvitation() {
+
+  try {
+
+    await music.play();
+
+    musicButton.innerHTML = "♫";
+
+    musicButton.style.opacity = "1";
+
+  } catch (error) {
+
+    console.log("Music could not autoplay.");
+
+  }
+
+  window.open(
+
+    canvaLink,
+
+    "_blank",
+
+    "noopener,noreferrer"
+
+  );
+
+}
+
+</script>
+
 </body>
+
 </html>
