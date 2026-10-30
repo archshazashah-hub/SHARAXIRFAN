@@ -1,289 +1,116 @@
-<!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Irfan & Sharafina | Engagement</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Irfan & Sharafina</title>
 
 <style>
-
-* {
-
-  margin: 0;
-
-  padding: 0;
-
-  box-sizing: border-box;
-
-}
+* { box-sizing: border-box; }
 
 body {
-
+  margin: 0;
   background: #f7efe3;
-
-  font-family: 'Cormorant Garamond', serif;
-
-  overflow-x: hidden;
-
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  min-height: 100svh;
 }
 
 .cover {
-
-  width: 100%;
-
-  max-width: 680px;
-
-  height: 100vh;
-
-  height: 100svh;
-
-  margin: auto;
-
   position: relative;
-
-  display: flex;
-
-  justify-content: center;
-
-  align-items: center;
-
-  overflow: hidden;
-
+  width: min(100vw, 66.6667svh);
+  aspect-ratio: 2 / 3;
 }
 
 .cover img {
-
   width: 100%;
-
   height: 100%;
-
-  object-fit: cover;
-
   display: block;
-
+  object-fit: contain;
 }
 
-.open-button {
-
+.open {
   position: absolute;
-
-  bottom: 7%;
-
-  left: 50%;
-
-  transform: translateX(-50%);
-
-  width: 48%;
-
-  height: 8%;
-
-  min-width: 180px;
-
-  background: transparent;
-
+  bottom: 4%;
+  left: 25%;
+  width: 50%;
+  height: 9%;
   border: none;
-
+  background: transparent;
   cursor: pointer;
-
-  -webkit-tap-highlight-color: transparent;
-
 }
 
-.music-button {
-
+.music {
   position: fixed;
-
-  top: 18px;
-
-  right: 18px;
-
-  z-index: 10;
-
-  width: 44px;
-
-  height: 44px;
-
-  border-radius: 50%;
-
+  top: 15px;
+  right: 15px;
+  z-index: 5;
   border: 1px solid #b78a50;
-
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
   background: #fffaf2;
-
   color: #65472d;
-
-  cursor: pointer;
-
-  font-size: 19px;
-
+  font-size: 20px;
 }
-
-.music-button:focus-visible,
-
-.open-button:focus-visible {
-
-  outline: 2px solid #a8793e;
-
-  outline-offset: 4px;
-
-}
-
-@media (min-width: 681px) {
-
-  body {
-
-    display: flex;
-
-    justify-content: center;
-
-  }
-
-  .cover {
-
-    width: 100%;
-
-  }
-
-}
-
 </style>
-
 </head>
 
 <body>
 
-<!-- BACKGROUND MUSIC -->
+<audio id="music"
+src="./assets/background-music.mp3"
+loop preload="auto"></audio>
 
-<audio
+<button class="music" id="musicButton"
+onclick="toggleMusic()">♫</button>
 
-  id="backgroundMusic"
+<div class="cover">
 
-  src="assets/background-music.mp3"
+<img
+src="./assets/invitation-opener.png"
+alt="Irfan and Sharafina Invitation"
+onerror="this.alt='Invitation image not found. Check assets folder and filename.'"
+>
 
-  loop
+<button class="open" onclick="openInvitation()"
+aria-label="Tap to open invitation"></button>
 
-  preload="auto">
-
-</audio>
-
-<!-- MUSIC CONTROL -->
-
-<button
-
-  class="music-button"
-
-  id="musicButton"
-
-  onclick="toggleMusic()"
-
-  aria-label="Play music">
-
-  ♫
-
-</button>
-
-<!-- OPENING INVITATION -->
-
-<main class="cover">
-
-  <img
-
-    src="assets/invitation-opener.png"
-
-    alt="Irfan and Sharafina engagement invitation">
-
-  <button
-
-    class="open-button"
-
-    onclick="openInvitation()"
-
-    aria-label="Tap to open invitation">
-
-  </button>
-
-</main>
+</div>
 
 <script>
-
-const music = document.getElementById("backgroundMusic");
-
+const music = document.getElementById("music");
 const musicButton = document.getElementById("musicButton");
 
 const canvaLink =
-
 "https://sharaxirfanengagement.my.canva.site/engagement-invitation-2026";
 
-// PLAY / PAUSE MUSIC
-
 async function toggleMusic() {
-
   if (music.paused) {
-
     try {
-
       await music.play();
-
       musicButton.innerHTML = "♫";
-
-      musicButton.style.opacity = "1";
-
     } catch (error) {
-
-      console.log("Music playback requires interaction.");
-
+      alert("Please check that background-music.mp3 is uploaded correctly.");
     }
-
   } else {
-
     music.pause();
-
     musicButton.innerHTML = "♪";
-
-    musicButton.style.opacity = "0.7";
-
   }
-
 }
 
-// OPEN CANVA INVITATION
+function openInvitation() {
+  // Open Canva immediately from the visitor's tap.
+  window.open(canvaLink, "_blank");
 
-async function openInvitation() {
-
-  try {
-
-    await music.play();
-
+  // Start music from the same visitor interaction.
+  music.play().then(() => {
     musicButton.innerHTML = "♫";
-
-    musicButton.style.opacity = "1";
-
-  } catch (error) {
-
-    console.log("Music could not autoplay.");
-
-  }
-
-  window.open(
-
-    canvaLink,
-
-    "_blank",
-
-    "noopener,noreferrer"
-
-  );
-
+  }).catch(() => {
+    alert("Please tap the music button to start the music.");
+  });
 }
-
 </script>
 
 </body>
-
 </html>
