@@ -1,5 +1,7 @@
 <html lang="en">
 <head>
+  <link rel="preconnect" href="https://canva.com">
+<link rel="dns-prefetch" href="https://canva.com">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Irfan & Sharafina</title>
@@ -100,17 +102,22 @@ async function toggleMusic() {
 }
 
 function openInvitation() {
-  // Open Canva immediately from the visitor's tap.
-  window.open(canvaLink, "_blank");
 
-  // Start music from the same visitor interaction.
+  // Open Canva immediately during the tap.
+  const invitationTab = window.open(
+    "https://sharaxirfanengagement.my.canva.site/engagement-invitation-2026",
+    "_blank"
+  );
+
+  // Start background music without delaying Canva.
   music.play().then(() => {
     musicButton.innerHTML = "♫";
   }).catch(() => {
-    alert("Please tap the music button to start the music.");
+    musicButton.innerHTML = "♪";
   });
-}
-</script>
 
-</body>
-</html>
+  // Give feedback if the browser blocks the new tab.
+  if (!invitationTab) {
+    alert("Please allow pop-ups to open your invitation.");
+  }
+}
