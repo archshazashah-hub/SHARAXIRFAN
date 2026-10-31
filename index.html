@@ -1,117 +1,333 @@
-<!DOCTYPE html>
-<html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Irfan & Sharafina</title>
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color" content="#f7efe3">
+
+<title>Irfan & Sharafina | Engagement Invitation</title>
+
+<meta name="description"
+content="You are invited to celebrate the engagement of Irfan and Sharafina.">
+
+<!-- Canva connection optimisation -->
+<link rel="preconnect" href="https://canva.com">
+<link rel="dns-prefetch" href="https://canva.com">
 
 <style>
-* { box-sizing: border-box; }
+
+/* GENERAL SETTINGS */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background: #f7efe3;
+}
 
 body {
-  margin: 0;
-  background: #f7efe3;
-  display: grid;
-  place-items: center;
+  width: 100%;
   min-height: 100vh;
   min-height: 100svh;
+  background: #f7efe3;
+  font-family: Georgia, serif;
+  overflow-x: hidden;
 }
+
+/* INVITATION COVER */
 
 .cover {
   position: relative;
-  width: min(100vw, 66.6667svh);
-  aspect-ratio: 2 / 3;
+
+  width: 100%;
+  max-width: 680px;
+
+  min-height: 100vh;
+  min-height: 100svh;
+
+  margin: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
 }
 
 .cover img {
-  width: 100%;
-  height: 100%;
   display: block;
+
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+
   object-fit: contain;
+
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
 }
+
+/* TAP TO OPEN BUTTON */
 
 .open {
   position: absolute;
-  bottom: 4%;
+
   left: 25%;
+  bottom: 5%;
+
   width: 50%;
   height: 9%;
-  border: none;
+
+  z-index: 10;
+
+  display: block;
+
   background: transparent;
+
+  border: none;
+
   cursor: pointer;
+
+  text-decoration: none;
+
+  -webkit-tap-highlight-color: transparent;
 }
 
-.music {
-  position: fixed;
-  top: 15px;
-  right: 15px;
-  z-index: 5;
-  border: 1px solid #b78a50;
-  border-radius: 50%;
-  width: 45px;
-  height: 45px;
-  background: #fffaf2;
-  color: #65472d;
-  font-size: 20px;
+.open:focus-visible {
+  outline: 2px solid #b78a50;
+  outline-offset: 3px;
 }
+
+/* MUSIC BUTTON */
+
+.music-button {
+  position: fixed;
+
+  top: 18px;
+  right: 18px;
+
+  z-index: 20;
+
+  width: 46px;
+  height: 46px;
+
+  border-radius: 50%;
+
+  border: 1px solid #b78a50;
+
+  background: rgba(255, 250, 242, 0.95);
+
+  color: #65472d;
+
+  font-size: 21px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  box-shadow: 0 3px 12px rgba(88, 57, 25, 0.12);
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+.music-button:active {
+  transform: scale(0.94);
+}
+
+/* DESKTOP DISPLAY */
+
+@media (min-width: 681px) {
+
+  body {
+    display: flex;
+    justify-content: center;
+  }
+
+  .cover {
+    width: 100%;
+  }
+
+}
+
+/* SMALL MOBILE DISPLAY */
+
+@media (max-width: 380px) {
+
+  .music-button {
+    width: 42px;
+    height: 42px;
+    top: 12px;
+    right: 12px;
+  }
+
+}
+
 </style>
+
 </head>
 
 <body>
 
-<audio id="music"
-src="./assets/background-music.mp3"
-loop preload="auto"></audio>
+<!-- BACKGROUND MUSIC -->
 
-<button class="music" id="musicButton"
-onclick="toggleMusic()">♫</button>
+<audio
+  id="music"
+  src="./assets/background-music.mp3"
+  preload="auto"
+  loop>
+</audio>
 
-<div class="cover">
 
-<img
-src="./assets/invitation-opener.png"
-alt="Irfan and Sharafina Invitation"
-onerror="this.alt='Invitation image not found. Check assets folder and filename.'"
->
+<!-- MUSIC CONTROL BUTTON -->
 
-<button class="open" onclick="openInvitation()"
-aria-label="Tap to open invitation"></button>
+<button
+  class="music-button"
+  id="musicButton"
+  type="button"
+  aria-label="Play background music"
+  onclick="toggleMusic()">
 
-</div>
+  ♪
+
+</button>
+
+
+<!-- MAIN INVITATION COVER -->
+
+<main class="cover">
+
+  <!-- ORIGINAL INVITATION IMAGE -->
+
+  <img
+    src="./assets/invitation-opener.png"
+    alt="Irfan and Sharafina engagement invitation"
+  >
+
+
+  <!-- NATIVE CANVA LINK -->
+
+  <a
+    class="open"
+
+    href="https://sharaxirfanengagement.my.canva.site/engagement-invitation-2026"
+
+    target="_blank"
+
+    rel="noopener noreferrer"
+
+    onclick="playMusic()"
+
+    aria-label="Tap to open engagement invitation">
+
+  </a>
+
+</main>
+
+
+<!-- JAVASCRIPT -->
 
 <script>
-const music = document.getElementById("music");
-const musicButton = document.getElementById("musicButton");
 
-const canvaLink =
-"https://sharaxirfanengagement.my.canva.site/engagement-invitation-2026";
+/* GET MUSIC ELEMENT */
+
+const music = document.getElementById("music");
+
+const musicButton =
+document.getElementById("musicButton");
+
+
+/* PLAY MUSIC */
+
+function playMusic() {
+
+  music.play()
+    .then(() => {
+
+      musicButton.innerHTML = "♫";
+
+      musicButton.setAttribute(
+        "aria-label",
+        "Pause background music"
+      );
+
+    })
+    .catch((error) => {
+
+      console.log("Music playback requires interaction.");
+
+    });
+
+}
+
+
+/* PLAY AND PAUSE CONTROL */
 
 async function toggleMusic() {
+
   if (music.paused) {
+
     try {
+
       await music.play();
+
       musicButton.innerHTML = "♫";
-    } catch (error) {
-      alert("Please check that background-music.mp3 is uploaded correctly.");
+
+      musicButton.setAttribute(
+        "aria-label",
+        "Pause background music"
+      );
+
     }
-  } else {
-    music.pause();
-    musicButton.innerHTML = "♪";
+
+    catch (error) {
+
+      console.log("Unable to play music:", error);
+
+    }
+
   }
+
+  else {
+
+    music.pause();
+
+    musicButton.innerHTML = "♪";
+
+    musicButton.setAttribute(
+      "aria-label",
+      "Play background music"
+    );
+
+  }
+
 }
 
-function openInvitation() {
-  // Open Canva immediately from the visitor's tap.
-  window.open(canvaLink, "_blank");
 
-  // Start music from the same visitor interaction.
-  music.play().then(() => {
-    musicButton.innerHTML = "♫";
-  }).catch(() => {
-    alert("Please tap the music button to start the music.");
-  });
-}
+/* UPDATE MUSIC ICON */
+
+music.addEventListener("play", () => {
+
+  musicButton.innerHTML = "♫";
+
+});
+
+music.addEventListener("pause", () => {
+
+  musicButton.innerHTML = "♪";
+
+});
+
 </script>
 
 </body>
+
 </html>
