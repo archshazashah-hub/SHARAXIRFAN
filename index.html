@@ -101,21 +101,21 @@ async function toggleMusic() {
 
 function openInvitation() {
 
-  // Open Canva immediately during the tap.
+  // Open Canva immediately in a new tab
   const invitationTab = window.open(
     "https://sharaxirfanengagement.my.canva.site/engagement-invitation-2026",
     "_blank"
   );
 
-  // Start background music without delaying Canva.
+  // Start instrumental music
   music.play().then(() => {
     musicButton.innerHTML = "♫";
   }).catch(() => {
     musicButton.innerHTML = "♪";
   });
 
-  // Give feedback if the browser blocks the new tab.
+  // Handle blocked pop-ups
   if (!invitationTab) {
-    alert("Please allow pop-ups to open your invitation.");
+    alert("Please allow pop-ups to open the invitation.");
   }
 }
