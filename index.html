@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -100,22 +101,17 @@ async function toggleMusic() {
 }
 
 function openInvitation() {
+  // Open Canva immediately from the visitor's tap.
+  window.open(canvaLink, "_blank");
 
-  // Open Canva immediately in a new tab
-  const invitationTab = window.open(
-    "https://sharaxirfanengagement.my.canva.site/engagement-invitation-2026",
-    "_blank"
-  );
-
-  // Start instrumental music
+  // Start music from the same visitor interaction.
   music.play().then(() => {
     musicButton.innerHTML = "♫";
   }).catch(() => {
-    musicButton.innerHTML = "♪";
+    alert("Please tap the music button to start the music.");
   });
-
-  // Handle blocked pop-ups
-  if (!invitationTab) {
-    alert("Please allow pop-ups to open the invitation.");
-  }
 }
+</script>
+
+</body>
+</html>
